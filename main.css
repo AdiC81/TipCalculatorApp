@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: hsl(185, 41%, 84%);
+  font-family: "Space Mono", monospace;
+}
+.container h1 {
+  color: hsl(186, 14%, 43%);
+}
+.container .calculator-wrapper {
+  background-color: hsl(0, 0%, 100%);
+  height: 60%;
+  width: 60%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator-wrapper .data-fields-wrapper,
+.calculator-wrapper .display-results-wrapper {
+  height: 80%;
+  width: 40%;
+  display: flex;
+  border-radius: 20px;
+  margin: 0 40px;
+  background-color: hsl(183, 100%, 15%);
+}
+.calculator-wrapper .data-fields-wrapper {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(184, 14%, 56%);
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.data-fields-wrapper .element-wrapper {
+  width: 90%;
+  position: relative;
+}
+.data-fields-wrapper .element-wrapper .error-message-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.data-fields-wrapper .element-wrapper p {
+  margin-bottom: 5px;
+}
+.data-fields-wrapper .element-wrapper svg {
+  position: absolute;
+  top: 58%;
+  left: 12px;
+}
+.data-fields-wrapper .user-input {
+  border: 2px solid transparent;
+  outline-style: none;
+  height: 40px;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 24px;
+  text-align: right;
+  padding: 0 12px;
+  background-color: hsl(189, 41%, 97%);
+  color: hsl(183, 100%, 15%);
+  font-family: "Space Mono", monospace;
+}
+.data-fields-wrapper .user-input::placeholder {
+  color: hsl(184, 14%, 56%);
+}
+.data-fields-wrapper .user-input:hover {
+  border: 2px solid hsl(172, 67%, 45%);
+  cursor: pointer;
+}
+
+.discount-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+.discount-wrapper input {
+  border: 2px solid transparent;
+  outline-style: none;
+  height: 40px;
+  width: 80px;
+  border-radius: 6px;
+  font-size: 24px;
+  text-align: center;
+  padding: 0 12px;
+  background-color: hsl(183, 100%, 15%);
+  color: hsl(0, 0%, 100%);
+  font-family: "Space Mono", monospace;
+  transition: background-color 0.4s, transform 0.2s;
+}
+.discount-wrapper input::placeholder {
+  color: hsl(184, 14%, 56%);
+}
+.discount-wrapper input:hover {
+  background-color: hsl(185, 41%, 84%);
+  color: hsl(183, 100%, 15%);
+  cursor: pointer;
+}
+.discount-wrapper input:active {
+  transform: scale(0.9);
+}
+.discount-wrapper input:last-child {
+  border: 2px solid transparent;
+  outline-style: none;
+  height: 40px;
+  width: 80px;
+  border-radius: 6px;
+  font-size: 24px;
+  text-align: right;
+  padding: 0 12px;
+  background-color: hsl(189, 41%, 97%);
+  color: hsl(183, 100%, 15%);
+  font-family: "Space Mono", monospace;
+  font-size: 14px;
+}
+.discount-wrapper input:last-child::placeholder {
+  color: hsl(184, 14%, 56%);
+}
+.discount-wrapper input:last-child:hover {
+  border: 2px solid hsl(172, 67%, 45%);
+  outline-style: none;
+  height: 40px;
+  width: 80px;
+  border-radius: 6px;
+  font-size: 24px;
+  text-align: right;
+  padding: 0 12px;
+  background-color: hsl(189, 41%, 97%);
+  color: hsl(183, 100%, 15%);
+  font-family: "Space Mono", monospace;
+  font-size: 14px;
+}
+.discount-wrapper input:last-child:hover::placeholder {
+  color: hsl(184, 14%, 56%);
+}
+.discount-wrapper input:last-child:active {
+  transform: none;
+}
+.discount-wrapper .selected {
+  background-color: hsl(172, 67%, 45%);
+}
+
+.display-results-wrapper {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.display-results-wrapper .element-wrapper {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+.display-results-wrapper .element-wrapper div:last-of-type {
+  position: relative;
+}
+.display-results-wrapper .element-wrapper div:last-of-type:last-child {
+  font-size: 1.6em;
+  color: hsl(172, 67%, 45%);
+}
+.display-results-wrapper .element-wrapper div:first-of-type {
+  color: hsl(0, 0%, 100%);
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.display-results-wrapper .element-wrapper div:first-of-type p:last-child {
+  color: hsl(184, 14%, 56%);
+}
+.display-results-wrapper .reset-btn {
+  border: 2px solid transparent;
+  outline-style: none;
+  height: 40px;
+  width: 80%;
+  border-radius: 6px;
+  font-size: 24px;
+  text-align: center;
+  padding: 0 12px;
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+  font-family: "Space Mono", monospace;
+  transition: background-color 0.4s, transform 0.2s;
+}
+.display-results-wrapper .reset-btn::placeholder {
+  color: hsl(184, 14%, 56%);
+}
+.display-results-wrapper .reset-btn:hover {
+  background-color: hsl(185, 41%, 84%);
+  cursor: pointer;
+}
+.display-results-wrapper .reset-btn:active {
+  transform: scale(0.98);
+}
+.display-results-wrapper .reset-btn:disabled {
+  border: 2px solid transparent;
+  outline-style: none;
+  height: 40px;
+  width: 80%;
+  border-radius: 6px;
+  font-size: 24px;
+  text-align: center;
+  padding: 0 12px;
+  background-color: hsl(186, 14%, 43%);
+  color: hsl(183, 100%, 15%);
+  font-family: "Space Mono", monospace;
+  transition: background-color 0.4s;
+}
+.display-results-wrapper .reset-btn:disabled::placeholder {
+  color: hsl(184, 14%, 56%);
+}
+.display-results-wrapper .reset-btn:disabled:hover {
+  cursor: initial;
+}
+
+@media (max-width: 875px) {
+  .container .calculator-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px 20px 0 0;
+    flex-direction: column;
+    padding: 10px 0;
+    gap: 10px;
+  }
+  .container .calculator-wrapper .data-fields-wrapper,
+  .container .calculator-wrapper .display-results-wrapper {
+    align-items: center;
+    width: 90%;
+    margin: 0;
+    height: 90%;
+  }
+  .container .calculator-wrapper .data-fields-wrapper .discount-wrapper {
+    margin: 0;
+    padding: 10px 0;
+    gap: 10px;
+  }
+  .container .calculator-wrapper .data-fields-wrapper p {
+    margin: 0;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

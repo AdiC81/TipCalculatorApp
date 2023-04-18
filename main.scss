@@ -1,0 +1,237 @@
+$container-color: hsl(185, 41%, 84%); // Light grayish cyan
+$wrapper-color: hsl(0, 0%, 100%);
+$display-results-wrapper: hsl(183, 100%, 15%); // Very dark cyan
+$primary-color: hsl(172, 67%, 45%);
+$title-color: hsl(186, 14%, 43%); // Dark grayish cyan
+$label-text: hsl(184, 14%, 56%); // Grayish cyan
+$input-background: hsl(189, 41%, 97%); // Very light grayish cyan
+
+@mixin input($width: 80px, $border: 2px solid transparent, $text: center, $backgroundColor: $display-results-wrapper, $color: $wrapper-color) {
+    border: $border;
+    outline-style: none;
+    height: 40px;
+    width: $width;
+    border-radius: 6px;
+    font-size: 24px;
+    text-align: $text;
+    padding: 0 12px;
+    background-color: $backgroundColor;
+    color: $color;
+    font-family: 'Space Mono', monospace;
+
+    &::placeholder {
+        color: $label-text;
+    }
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: $container-color;
+    font-family: 'Space Mono', monospace;
+
+    h1 {
+        color: $title-color;
+    }
+
+    .calculator-wrapper {
+        background-color: $wrapper-color;
+        height: 60%;
+        width: 60%;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.calculator-wrapper {
+    .data-fields-wrapper,
+    .display-results-wrapper {
+        height: 80%;
+        width: 40%;
+        display: flex;
+        border-radius: 20px;
+        margin: 0 40px;
+        background-color: $display-results-wrapper;
+    }
+
+    .data-fields-wrapper {
+        background-color: $wrapper-color;
+        color: $label-text;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}
+
+.data-fields-wrapper {
+    .element-wrapper {
+        width: 90%;
+        position: relative;
+
+        .error-message-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        p {
+            margin-bottom: 5px;
+        }
+
+        svg {
+            position: absolute;
+            top: 58%;
+            left: 12px;
+        }
+    }
+
+    .user-input {
+        @include input($width: 100%, $text: right, $backgroundColor: $input-background, $color: $display-results-wrapper);
+
+        &:hover {
+            border: 2px solid $primary-color;
+            cursor: pointer;
+        }
+    }
+}
+
+.discount-wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+
+    input {
+        @include input();
+        transition: background-color .4s, transform .2s;
+
+        &:hover {
+            background-color: $container-color;
+            color: $display-results-wrapper;
+            cursor: pointer;
+        }
+
+        &:active {
+            transform: scale(0.9);
+        }
+
+        &:last-child {
+            @include input($text: right, $backgroundColor: $input-background, $color: $display-results-wrapper );
+            font-size: 14px;
+            
+            &:hover {
+                @include input($border: 2px solid $primary-color, $text: right, $backgroundColor: $input-background, $color: $display-results-wrapper );
+                font-size: 14px;
+            }
+
+            &:active {
+                transform: none;
+            }
+        }
+    }
+
+    .selected {
+        background-color: $primary-color;
+    }
+}
+
+.display-results-wrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .element-wrapper {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+
+        & div:last-of-type {
+            position: relative;
+
+            &:last-child {
+                font-size: 1.6em;
+                color: $primary-color;
+            }
+        }
+
+        & div:first-of-type {
+            color: $wrapper-color;
+            font-size: 0.8em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            & p:last-child {
+                color: $label-text;
+            }
+        }
+    }
+
+    .reset-btn {
+        @include input($width: 80%, $backgroundColor: $primary-color, $color: $display-results-wrapper);
+        transition: background-color .4s, transform .2s;
+
+        &:hover {
+            background-color: $container-color;
+            cursor: pointer;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+
+        &:disabled {
+            @include input($width: 80%, $backgroundColor: $title-color, $color: $display-results-wrapper);
+            transition: background-color .4s;
+    
+            &:hover {
+                cursor: initial;
+            }
+        }
+    }
+}
+
+@media (max-width:875px) {
+    .container {
+        .calculator-wrapper {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px 20px 0 0;
+            flex-direction: column;
+            padding: 10px 0;
+            gap: 10px;
+    
+            .data-fields-wrapper,
+            .display-results-wrapper {
+                align-items: center;
+                width: 90%;
+                margin: 0;
+                height: 90%;
+            }
+
+            .data-fields-wrapper {
+                .discount-wrapper {
+                    margin: 0;
+                    padding: 10px 0;
+                    gap: 10px;
+                }
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
